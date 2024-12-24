@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon/favicon.ico.png" type="image/x-icon">
+    <title>Barn</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icones Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Barn</a>
+            <!-- Botão Hamburguer (para telas menores) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quem-somos">Quem Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prod">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fale-conosco">Fale Conosco</a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="btn btn-outline-light" href="login.html">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrossel com campo de busca fixo -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide com campo de busca -->
+            <div class="carousel-item active">
+                <img src="img/imagem3.png" class="d-block w-100" alt="Slide 1" style="height: 300px; object-fit: cover;">
+                <div class="carousel-caption d-flex justify-content-center align-items-center" style="height: 100%;">
+                    <div class="input-group w-75 w-md-50">
+                        <input type="text" class="form-control" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+                        <button class="btn btn-primary" type="button">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de produtos -->
+    <div class="container mt-5" id="prod">
+        <h2 class="text-center mb-4">Caminhões e Tratores</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/imagem.png" class="card-img-top w-100" alt="Produto 1" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">John Deere</h5>
+                        <p class="card-text">R$: 1000,00</p>
+                        <a href="#" class="btn btn-primary">Ver Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/imagem2.png" class="card-img-top w-100" alt="Produto 2" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Máquina Agrícola</h5>
+                        <p class="card-text">R$: 1000,00</p>
+                        <a href="#" class="btn btn-primary">Ver Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/Camin2.jpg" class="card-img-top w-100" alt="Produto 3" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">Caminhão</h5>
+                        <p class="card-text">R$: 1000,00</p>
+                        <a href="#" class="btn btn-primary">Ver Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
