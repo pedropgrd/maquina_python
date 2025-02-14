@@ -62,40 +62,23 @@
     <div class="container mt-5" id="prod">
         <h2 class="text-center mb-4">Caminhões e Tratores</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/imagem.png" class="card-img-top w-100" alt="Produto 1" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">John Deere</h5>
-                        <p class="card-text">R$: 1000,00</p>
-                        <a href="#" class="btn btn-primary">Ver Mais</a>
+            {% for anuncio in anuncios %}
+                <div class="col">
+                    <div class="card h-100">
+                        <!-- Ajuste para imagem com fallback -->
+                        <img src="{{ anuncio.imagem.url|default:'/caminho/para/imagem/default.jpg' }}" class="card-img-top w-100" alt="{{ anuncio.nome }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ anuncio.nome }}</h5>
+                            <p class="card-text"><strong>Preço:</strong> R$ {{ anuncio.valor }}</p>
+                            <a href="{% url 'detalhe_anuncio' anuncio.id %}" class="btn btn-primary">Ver Mais</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/imagem2.png" class="card-img-top w-100" alt="Produto 2" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Máquina Agrícola</h5>
-                        <p class="card-text">R$: 1000,00</p>
-                        <a href="#" class="btn btn-primary">Ver Mais</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/Camin2.jpg" class="card-img-top w-100" alt="Produto 3" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">Caminhão</h5>
-                        <p class="card-text">R$: 1000,00</p>
-                        <a href="#" class="btn btn-primary">Ver Mais</a>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+                <p class="text-center">Nenhum anúncio disponível no momento.</p>
+            {% endfor %}
         </div>
     </div>
-
-    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

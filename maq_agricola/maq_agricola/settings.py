@@ -58,7 +58,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'home', 'templates')],  # Caminho para os templates
+          'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 
 WSGI_APPLICATION = 'maq_agricola.wsgi.application'

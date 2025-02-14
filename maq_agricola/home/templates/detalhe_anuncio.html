@@ -1,0 +1,8 @@
+<!-- home/templates/home/detalhe_anuncio.html -->
+<div class="container mt-5">
+    <h2>{{ anuncio.nome }}</h2>
+    <img src="{{ anuncio.imagem.url }}" alt="{{ anuncio.nome }}" class="img-fluid">
+    <p><strong>Preço:</strong> R$ {{ anuncio.valor }}</p>
+    <p>{{ anuncio.descricao }}</p>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Voltar para a lista</a>
+</div>
