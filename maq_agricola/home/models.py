@@ -18,5 +18,10 @@ class Anuncio(models.Model):
     imagem = models.ImageField(upload_to='imagens_anuncios/', blank=True, null=True)
     data_publicacao = models.DateTimeField(auto_now_add=True)
 
+    def get_imagem_url(self):
+        if self.imagem:
+            return self.imagem.url
+        return '/static/img/default.jpg'  # Caminho da imagem padrão
+
     def __str__(self):
         return self.titulo

@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#fale-conosco">Fale Conosco</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="btn btn-outline-light" href="login.html">Entrar</a>
+                        <a class="btn btn-outline-light" href="http://127.0.0.1:8000/admin/login/?next=/admin/">Entrar</a>
                     </li>
                 </ul>
             </div>
@@ -66,7 +66,12 @@
                 <div class="col">
                     <div class="card h-100">
                         <!-- Ajuste para imagem com fallback -->
-                        <img src="{{ anuncio.imagem.url|default:'/caminho/para/imagem/default.jpg' }}" class="card-img-top w-100" alt="{{ anuncio.nome }}" style="height: 200px; object-fit: cover;">
+                        {% if anuncio.imagem %}
+                        <img src="{{ anuncio.imagem.url }}" class="card-img-top w-100" alt="{{ anuncio.titulo }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <img src="/static/img/default.jpg" class="card-img-top w-100" alt="Imagem padrão" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    
                         <div class="card-body">
                             <h5 class="card-title">{{ anuncio.nome }}</h5>
                             <p class="card-text"><strong>Preço:</strong> R$ {{ anuncio.valor }}</p>

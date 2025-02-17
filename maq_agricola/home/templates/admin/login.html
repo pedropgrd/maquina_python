@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Máquinas Agrícolas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg" style="max-width: 400px; width: 100%;">
+      <div class="card-body">
+        <div class="text-center mb-4">
+          <img src="{% static 'trator menu.png' %}" alt="Logo" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px;">
+          <h1 class="h4 text-success">Login</h1>
+        </div>
+        <form method="post">
+          {% csrf_token %}
+          <!-- Renderizar os campos do Django Admin -->
+          <div class="mb-3">
+            <label for="id_username" class="form-label">E-mail</label>
+            {{ form.username }} <!-- Formulário do campo username -->
+          </div>
+          <div class="mb-3">
+            <label for="id_password" class="form-label">Senha</label>
+            {{ form.password }} <!-- Formulário do campo password -->
+          </div>
+          <button type="submit" class="btn btn-success w-100">Entrar</button>
+        </form>
+        <div class="text-center mt-3">
+          <p class="mb-0">Não tem uma conta? <a href="{% url 'admin:register' %}" class="text-success">Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
