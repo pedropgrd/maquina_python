@@ -42,24 +42,24 @@
         </div>
     </nav>
 
-    <!-- Carrossel com campo de busca fixo -->
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <!-- Slide com campo de busca -->
-            <div class="carousel-item active">
-                {% load static %}
+  <!-- Carrossel com campo de busca fixo -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Slide com campo de busca -->
+        <div class="carousel-item active">
+            {% load static %}
+            <img src="{% static 'home/img/imagem.png' %}" alt="Minha Imagem" class="d-block w-100" style="height: 300px; object-fit: cover;">
 
-<img src="{% static 'home/img/imagem.png' %}" alt="Minha Imagem" class="d-block w-100" style="height: 300px; object-fit: cover;">
-
-                <div class="carousel-caption d-flex justify-content-center align-items-center" style="height: 100%;">
-                    <div class="input-group w-75 w-md-50">
-                        <input type="text" class="form-control" placeholder="Buscar produtos..." aria-label="Buscar produtos">
-                        <button class="btn btn-primary" type="button">Buscar</button>
-                    </div>
-                </div>
+            <div class="carousel-caption d-flex justify-content-center align-items-center" style="height: 100%;">
+                <form method="GET" action="{% url 'index' %}" class="input-group w-75 w-md-50">
+                    <input type="text" class="form-control" name="q" placeholder="Buscar por marca ou descrição..." value="{{ request.GET.q }}">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Seção de produtos -->
     <div class="container mt-5 pt-3 mb-4" id="prod">
