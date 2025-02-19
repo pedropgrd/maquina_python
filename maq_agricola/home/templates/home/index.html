@@ -47,7 +47,10 @@
         <div class="carousel-inner">
             <!-- Slide com campo de busca -->
             <div class="carousel-item active">
-                <img src="img/imagem3.png" class="d-block w-100" alt="Slide 1" style="height: 300px; object-fit: cover;">
+                {% load static %}
+
+<img src="{% static 'home/img/imagem.png' %}" alt="Minha Imagem" class="d-block w-100" style="height: 300px; object-fit: cover;">
+
                 <div class="carousel-caption d-flex justify-content-center align-items-center" style="height: 100%;">
                     <div class="input-group w-75 w-md-50">
                         <input type="text" class="form-control" placeholder="Buscar produtos..." aria-label="Buscar produtos">
@@ -73,8 +76,8 @@
                     {% endif %}
                     
                         <div class="card-body">
-                            <h5 class="card-title">{{ anuncio.nome }}</h5>
-                            <p class="card-text"><strong>Preço:</strong> R$ {{ anuncio.valor }}</p>
+                            <h6 class="card-title">{{ anuncio.titulo }}</h6>
+                            <p class="card-text text-success"><strong class="text-black">Preço:</strong> R$ {{ anuncio.preco }}</p>
                             <a href="{% url 'detalhe_anuncio' anuncio.id %}" class="btn btn-primary">Ver Mais</a>
                         </div>
                     </div>

@@ -1,0 +1,103 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon/favicon.ico.png" type="image/x-icon">
+    <title>Barn</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icones Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Barn</a>
+            <!-- Botão Hamburguer (para telas menores) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'index' %}">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quem-somos">Quem Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prod">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fale-conosco">Fale Conosco</a>
+                    </li>
+                    <li class="nav-item ms-4">
+                        <a class="btn btn-outline-light" href="http://127.0.0.1:8000/admin/login/?next=/admin/">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="mb-3">{{ anuncio.titulo }}</h2>
+            
+            <!-- Carrossel de imagens -->
+            <div id="carouselAnuncio" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ anuncio.get_imagem_url }}" class="d-block w-100 img-fluid" alt="{{ anuncio.titulo }}">
+                    </div>
+                    <!-- Adicionar mais imagens se houver -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselAnuncio" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselAnuncio" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mt-5 pt-2">
+            <div class="card p-3">
+                <h4 class="text-success">R$ {{ anuncio.preco }}</h4>
+                <table class="table table-bordered mt-3">
+                    <tbody>
+                        <tr>
+                            <th>Categoria</th>
+                            <td>{{ anuncio.categoria }}</td>
+                        </tr>
+                        <tr>
+                            <th>Marca</th>
+                            <td>{{ anuncio.marca }}</td>
+                        </tr>
+                        <tr>
+                            <th>Modelo</th>
+                            <td>{{ anuncio.modelo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ano</th>
+                            <td>{{ anuncio.ano }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#" class="btn btn-primary btn-lg w-100 mt-2">Entrar em contato</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h4>Descrição</h4>
+            <p>{{ anuncio.descricao }}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
