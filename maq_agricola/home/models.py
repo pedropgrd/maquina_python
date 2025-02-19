@@ -1,4 +1,9 @@
 from django.db import models
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 class Anuncio(models.Model):
     CATEGORIAS = (
@@ -25,3 +30,5 @@ class Anuncio(models.Model):
 
     def __str__(self):
         return self.titulo
+
+

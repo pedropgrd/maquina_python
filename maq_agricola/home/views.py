@@ -8,3 +8,5 @@ def index(request):
 def detalhe_anuncio(request, anuncio_id):
     anuncio = get_object_or_404(Anuncio, pk=anuncio_id)
     return render(request, 'home/detalhe_anuncio.html', {'anuncio': anuncio})  # Caminho corrigido
+
+
