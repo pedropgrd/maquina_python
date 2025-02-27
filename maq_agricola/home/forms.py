@@ -24,3 +24,4 @@ class AnuncioForm(forms.ModelForm):
     class Meta:
         model = Anuncio
         fields = ['titulo', 'descricao', 'categoria', 'marca', 'modelo', 'ano', 'preco', 'imagem']
+        # 
