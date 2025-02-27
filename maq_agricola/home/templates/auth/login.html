@@ -10,8 +10,17 @@
   <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg" style="max-width: 400px; width: 100%;">
       <div class="card-body">
+        <!-- Exibição das mensagens de erro -->
+        {% if messages %}
+          <div class="alert alert-danger text-center" role="alert">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <div class="text-center mb-4">
-          <img src="trator_menu.png" alt="Logo" class="img-fluid rounded-circle mb-3">
+          {% comment %} <img src="trator_menu.png" alt="Logo" class="img-fluid rounded-circle mb-3"> {% endcomment %}
           <h1 class="h4 text-success">Login</h1>
         </div>
         <form method="POST" action="{% url 'login' %}">

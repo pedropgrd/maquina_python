@@ -34,6 +34,7 @@ def registrar_anunciante(request):
         form = RegistroAnuncianteForm()
     return render(request, 'auth/registro.html', {'form': form})
 
+
 # Login
 def login_view(request):
     if request.method == 'POST':
@@ -41,10 +42,16 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            messages.success(request, "Login realizado com sucesso!")
             return redirect('gerenciar_anuncios')
+        else:
+            messages.error(request, "Usuário ou senha incorretos. Tente novamente.")
+
     else:
         form = AuthenticationForm()
+
     return render(request, 'auth/login.html', {'form': form})
+
 
 # Logout
 def logout_view(request):
@@ -70,16 +77,28 @@ def criar_anuncio(request):
             return redirect('gerenciamento')
     return redirect('gerenciamento')
 
+@login_required
 def editar_anuncio(request, id):
     anuncio = get_object_or_404(Anuncio, id=id)
+
     if request.method == 'POST':
         form = AnuncioForm(request.POST, request.FILES, instance=anuncio)
         if form.is_valid():
             form.save()
+            messages.success(request, "Anúncio atualizado com sucesso!")
             return redirect('gerenciamento')
-    return redirect('gerenciamento')
+        else:
+            messages.error(request, "Erro ao editar anúncio. Verifique os dados informados.")
+    else:
+        form = AnuncioForm(instance=anuncio)
 
+    return render(request, 'anuncios/editar_anuncio.html', {'form': form, 'anuncio': anuncio})
+
+
+
+@login_required
 def deletar_anuncio(request, id):
+    # Obtém o anúncio a ser deletado
     anuncio = get_object_or_404(Anuncio, id=id)
-    anuncio.delete()
-    return redirect('gerenciamento')
+    anuncio.delete()  # Exclui o anúncio
+    return redirect('gerenciamento')  # Redireciona para a lista de anúncios
