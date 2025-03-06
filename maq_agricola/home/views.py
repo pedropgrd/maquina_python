@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Anuncio, Anunciante
 from .forms import AnuncioForm
 from .forms import RegistroAnuncianteForm
+from .forms import PerfilAnuncianteForm 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from .forms import PerfilAnuncianteForm
 
 # Página inicial
 def index(request):
@@ -102,3 +107,24 @@ def deletar_anuncio(request, id):
     anuncio = get_object_or_404(Anuncio, id=id)
     anuncio.delete()  # Exclui o anúncio
     return redirect('gerenciamento')  # Redireciona para a lista de anúncios
+
+
+@login_required
+def perfil_anunciante(request):
+    user = request.user
+    if request.method == "POST":
+        form = PerfilAnuncianteForm(request.POST, instance=user)
+        if form.is_valid():
+            user = form.save(commit=False)  # Salva os outros campos
+            nova_senha = form.cleaned_data.get("nova_senha")
+            
+            if nova_senha:
+                user.set_password(nova_senha)  # Atualiza a senha corretamente
+                update_session_auth_hash(request, user)  # Mantém o usuário logado após alterar a senha
+            
+            user.save()
+            return redirect('perfil_anunciante')
+    else:
+        form = PerfilAnuncianteForm(instance=user)
+
+    return render(request, 'auth/perfil_anunciante.html', {'form': form})

@@ -11,6 +11,7 @@ urlpatterns = [
     path('gerenciamento/', views.gerenciamento, name='gerenciamento'),
     path('criar/', views.criar_anuncio, name='criar_anuncio'),
     path('editar/<int:id>/', views.editar_anuncio, name='editar_anuncio'),
+    path('perfil/', views.perfil_anunciante, name='perfil_anunciante'),
     path('deletar/<int:id>/', views.deletar_anuncio, name='deletar_anuncio'),
     path('', views.index, name='index'),
     path('anuncio/<int:anuncio_id>/', views.detalhe_anuncio, name='detalhe_anuncio'),
