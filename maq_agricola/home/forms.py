@@ -9,18 +9,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm
 
 class RegistroAnuncianteForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True, label="Nome")
+    last_name = forms.CharField(max_length=30, required=True, label="Sobrenome")
     telefone = forms.CharField(max_length=15, required=True, label="Telefone")
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'telefone']
+        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'telefone']
 
     def save(self, commit=True):
-        # Criação do usuário
         user = super().save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
-            # Criar o objeto Anunciante associado ao usuário
             Anunciante.objects.create(user=user, telefone=self.cleaned_data['telefone'])
         return user
 

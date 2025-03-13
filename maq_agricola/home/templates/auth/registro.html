@@ -31,11 +31,24 @@
         <form method="POST" action="{% url 'registrar_anunciante' %}">
           {% csrf_token %}
           
+                    <!-- Campo Nome -->
+          <div class="mb-3">
+            <label for="first_name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Digite seu nome" required>
+          </div>
+
+          <!-- Campo Sobrenome -->
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Sobrenome</label>
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Digite seu sobrenome" required>
+          </div>
+
           <!-- Campo Usuário -->
           <div class="mb-3">
             <label for="username" class="form-label">Usuário</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Digite seu nome de usuário" required>
           </div>
+
 
           <!-- Campo E-mail -->
           <div class="mb-3">
